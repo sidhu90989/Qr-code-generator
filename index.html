@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .container {
+            display: flex;
+            background-color: rgb(27, 40, 218);
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            flex-direction: column;
+        }
+        
+        .input {
+            background-color: tomato;
+            text-align: center;
+            align-items: center;
+            padding: 20px 100px;
+            position: relative;
+            border: 5px solid transparent;
+            border-radius: 10px;
+        }
+        button {
+            background-color: burlywood;
+            padding: 10px 100px;
+            border-radius: 20px;
+            cursor: pointer; /* Add cursor pointer for better UX */
+        }
+        input {
+            padding: 10px 50px;
+            text-align: left;
+        }
+        button:hover {
+            background-color: rgb(202, 14, 45); /* Change to background-color */
+        }
+    </style>
+</head>
+<body> 
+    <div class="container">
+        <div class="input">
+            <p> QR Code Generator</p>
+            <input type="text" id="inputText" placeholder="Enter text"><br><br>     
+            <button onclick="generate()">Generate QR</button>
+        </div>
+        <div class="qr">
+            <div class="img">
+                <img src="" id="imgqr" alt="QR Code"><br><br>
+            </div>
+        </div>
+    </div>
+    <script>
+        function generate() {
+            let input = document.getElementById("inputText").value; // Get the input value
+            let img = document.getElementById("imgqr");
+            img.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + encodeURIComponent(input); // Use encodeURIComponent to handle special characters
+        }
+    </script>
+</body>
+</html>
